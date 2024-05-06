@@ -1,0 +1,6 @@
+__pycache__/
+.idea/
+.DS_Store
+logs/
+db.sqlite3
+static/
