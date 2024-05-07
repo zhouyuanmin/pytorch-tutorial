@@ -68,6 +68,14 @@ def main():
             optimizer.step()  # 优化网络参数
         print("epoch", epoch, "accuracy:", evaluate(test_data, net))  # 打印当前网络的正确率
 
+    # 保存训练好的模型
+    torch.save(net.state_dict(), "model.pth")
+
+    # 从文件加载模型
+    net2 = Net()  # 实例化模型 还没训练
+    net2.load_state_dict(torch.load("model.pth"))  # 加载权重
+
+    net = net2
     # 随机抽取3张图片 显示预测结果
     for (n, (x, _)) in enumerate(test_data):
         if n > 3:
